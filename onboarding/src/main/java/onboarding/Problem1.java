@@ -63,10 +63,10 @@ class Problem1 {
      * @return
      */
     public static int getMaxValue(List<Integer> numbers) {
-        int leftMaxValue = compare(getSumValue(numbers.get(0)), getMultiplyValue(numbers.get(0)));
-        int rightMaxValue = compare(getSumValue(numbers.get(1)), getMultiplyValue(numbers.get(1)));
+        int leftMaxValue = Math.max(getSumValue(numbers.get(0)), getMultiplyValue(numbers.get(0)));
+        int rightMaxValue = Math.max(getSumValue(numbers.get(1)), getMultiplyValue(numbers.get(1)));
 
-        return compare(leftMaxValue, rightMaxValue);
+        return Math.max(leftMaxValue, rightMaxValue);
     }
 
     /**
@@ -99,17 +99,6 @@ class Problem1 {
         }
 
         return value;
-    }
-
-    /**
-     * 두수를 비교하는 함수
-     *
-     * @param sum
-     * @param multiply
-     * @return
-     */
-    public static int compare(int sum, int multiply) {
-        return sum > multiply ? sum : multiply;
     }
 
     /**
