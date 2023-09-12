@@ -17,9 +17,6 @@ class Problem1 {
 
     /**
      * 번호 검증하는 함수
-     *
-     * @param numbers
-     * @return
      */
     public static boolean validate(List<Integer> numbers) {
         if (numbers.size() != 2) {
@@ -45,9 +42,6 @@ class Problem1 {
 
     /**
      * 범호 범위 확인하는 함수
-     *
-     * @param number
-     * @return
      */
     public static boolean checkRange(int number) {
         if (number < 1 || number > 400) {
@@ -58,9 +52,6 @@ class Problem1 {
 
     /**
      * 가장 큰 값을 구하는 함수
-     *
-     * @param numbers
-     * @return
      */
     public static int getMaxValue(List<Integer> numbers) {
         int leftMaxValue = Math.max(getSumValue(numbers.get(0)), getMultiplyValue(numbers.get(0)));
@@ -71,9 +62,6 @@ class Problem1 {
 
     /**
      * 자리수의 덧셈 값을 구하는 함수
-     *
-     * @param number
-     * @return
      */
     public static int getSumValue(int number) {
         int sum = 0;
@@ -86,9 +74,6 @@ class Problem1 {
 
     /**
      * 각 자리수의 곱셈값 구하는 함수
-     *
-     * @param number
-     * @return
      */
     public static int getMultiplyValue(int number) {
         int value = 1;
@@ -103,10 +88,6 @@ class Problem1 {
 
     /**
      * 결과값 리턴하는 함수
-     *
-     * @param pobiValue
-     * @param crongValue
-     * @return
      */
     public static int printValue(int pobiValue, int crongValue) {
         if (pobiValue > crongValue) {
