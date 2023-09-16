@@ -50,6 +50,20 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void cas3() {
+            String cryptogram = "zyelleyz";
+            assertThat(Problem2.checkDuplicate(cryptogram)).isEqualTo(false);
+        }
+
+        @Test
+        void case4() {
+            String cryptogram = "zyelleyz";
+            for(int i = 0; i<cryptogram.length(); i++) {
+                System.out.println(cryptogram.charAt(i) + " " + Problem2.indexCheckDuplicates(cryptogram,i));
+            }
+        }
     }
 
     @Nested
