@@ -124,6 +124,23 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void 이메일형식테스트() {
+            String email1 = "asb123@email.com";
+            String email2 = "asb";
+            String email3 = "asn@gmail.com";
+            String email4 = "@gmail.com";
+            String email5 = "111231231231231213@gmailcom";
+            String email6 = "a@email.com";
+
+            assertThat(Problem6.isVaildEmail(email1)).isEqualTo(true);
+            assertThat(Problem6.isVaildEmail(email2)).isEqualTo(false);
+            assertThat(Problem6.isVaildEmail(email3)).isEqualTo(false);
+            assertThat(Problem6.isVaildEmail(email4)).isEqualTo(false);
+            assertThat(Problem6.isVaildEmail(email5)).isEqualTo(false);
+            assertThat(Problem6.isVaildEmail(email6)).isEqualTo(true);
+        }
     }
 
     @Nested
