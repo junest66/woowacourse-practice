@@ -16,4 +16,10 @@ public class Problem6 {
         String emailPattern = "\\w{1,10}@email\\.com";
         return Pattern.matches(emailPattern, email);
     }
+
+    public static boolean isVaildNickName(String nickName) {
+        String nickNamePattern = "^[ㄱ-ㅎ가-힣]{1,19}$";
+        return Pattern.matches(nickNamePattern, nickName);
+    }
+
 }

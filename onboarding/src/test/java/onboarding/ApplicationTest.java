@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -140,6 +141,22 @@ class ApplicationTest {
             assertThat(Problem6.isVaildEmail(email4)).isEqualTo(false);
             assertThat(Problem6.isVaildEmail(email5)).isEqualTo(false);
             assertThat(Problem6.isVaildEmail(email6)).isEqualTo(true);
+        }
+
+        @Test
+        @DisplayName("닉네임검증테스트")
+        void testNickName() {
+            String nickName1 = "abc";
+            String nickName2 = "한글";
+            String nickName3 = "";
+            String nickName4 = "한글123";
+            String nickName5 = "한글이이이이이이이이이이이이이이잉이이이이한글이이이이이이이이이이이이이이잉이이이이";
+
+            assertThat(Problem6.isVaildNickName(nickName1)).isEqualTo(false);
+            assertThat(Problem6.isVaildNickName(nickName2)).isEqualTo(true);
+            assertThat(Problem6.isVaildNickName(nickName3)).isEqualTo(false);
+            assertThat(Problem6.isVaildNickName(nickName4)).isEqualTo(false);
+            assertThat(Problem6.isVaildNickName(nickName5)).isEqualTo(false);
         }
     }
 
