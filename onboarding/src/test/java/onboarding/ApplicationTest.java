@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -157,6 +158,18 @@ class ApplicationTest {
             assertThat(Problem6.isVaildNickName(nickName3)).isEqualTo(false);
             assertThat(Problem6.isVaildNickName(nickName4)).isEqualTo(false);
             assertThat(Problem6.isVaildNickName(nickName5)).isEqualTo(false);
+        }
+
+        @Test
+        @DisplayName("중복되는 닉네임 검사하는 함수")
+        void testDuplicateNickName() {
+            List<List<String>> forms = new ArrayList<>();
+            forms.add(List.of("jm@email.com", "제이엠"));
+            forms.add(List.of("jason@email.com", "제이슨"));
+            forms.add(List.of("woniee@email.com", "워니"));
+            forms.add(List.of("mj@email.com", "엠제이"));
+            forms.add(List.of("nowm@email.com", "이제엠"));
+            Problem6.solution(forms);
         }
     }
 
