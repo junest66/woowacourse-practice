@@ -5,11 +5,6 @@ import baseball.model.Referee;
 import baseball.model.User;
 import camp.nextstep.edu.missionutils.Console;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class GameController {
 
     private Computer computer;
@@ -24,29 +19,31 @@ public class GameController {
 
     public void gameStart() {
         System.out.println("숫자 야구 게임을 시작합니다.");
-        do {
-            initComputer();
+        while (user.getStartNumber().equals("1")) {
+            init();
             turn();
-        } while (user.getStartNumber().equals("1"));
+        }
     }
 
     public void turn() {
-        do {
+        while (!referee.isSuccess()) {
             inputPlayerNumber();
             referee.judge(user.getNumbers(), computer.getRandomNumbers());
             referee.print();
-        } while (!referee.isSuccess());
+        }
         restartGame();
     }
 
     public void inputPlayerNumber() {
         System.out.print("숫자를 입력해주세요 : ");
-        user.setNumbers(user.inputNumber());
+        String input = Console.readLine();
+        user.validation(input);
+        user.setNumbers(user.inputNumber(input));
     }
 
-    public void initComputer() {
-        this.computer = new Computer();
-        this.referee = new Referee();
+    public void init() {
+        computer.makeRandomNumbers();
+        referee.init();
     }
 
     public void restartGame() {
