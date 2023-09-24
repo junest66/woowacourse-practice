@@ -27,7 +27,7 @@ public class GameController {
         do {
             initComputer();
             turn();
-        } while (!restartGame());
+        } while (user.getStartNumber().equals("1"));
     }
 
     public void turn() {
@@ -36,6 +36,7 @@ public class GameController {
             referee.judge(user.getNumbers(), computer.getRandomNumbers());
             referee.print();
         } while (!referee.isSuccess());
+        restartGame();
     }
 
     public void inputPlayerNumber() {
@@ -48,12 +49,9 @@ public class GameController {
         this.referee = new Referee();
     }
 
-    public boolean restartGame() {
+    public void restartGame() {
         System.out.println("게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.");
         String input = Console.readLine();
-        if(Integer.parseInt(input) == 2) {
-            return true;
-        }
-        return false;
+        user.setStartNumber(input);
     }
 }

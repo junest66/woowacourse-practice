@@ -10,8 +10,10 @@ import java.util.Set;
 public class User {
 
     private List<Integer> numbers;
+    private String startNumber;
 
     public User() {
+        this.startNumber = "1";
     }
 
     public List<Integer> getNumbers() {
@@ -20,6 +22,14 @@ public class User {
 
     public void setNumbers(List<Integer> numbers) {
         this.numbers = numbers;
+    }
+
+    public String getStartNumber() {
+        return startNumber;
+    }
+
+    public void setStartNumber(String startNumber) {
+        this.startNumber = startNumber;
     }
 
     public List<Integer> inputNumber() {
