@@ -32,9 +32,7 @@ public class User {
         this.startNumber = startNumber;
     }
 
-    public List<Integer> inputNumber() {
-        String input = Console.readLine();
-        validation(input);
+    public List<Integer> inputNumber(String input) {
         List<Integer> numbers = new ArrayList<>();
         for(int i = 0; i < input.length(); i++) {
             numbers.add(Integer.parseInt(String.valueOf(input.charAt(i))));
