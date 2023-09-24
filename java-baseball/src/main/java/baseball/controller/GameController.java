@@ -26,16 +26,16 @@ public class GameController {
         System.out.println("숫자 야구 게임을 시작합니다.");
         do {
             initComputer();
-            startGame();
+            turn();
         } while (!restartGame());
     }
 
-    public void startGame() {
+    public void turn() {
         do {
             inputPlayerNumber();
             referee.judge(user.getNumbers(), computer.getRandomNumbers());
             referee.print();
-        } while ( !referee.isSuccess());
+        } while (!referee.isSuccess());
     }
 
     public void inputPlayerNumber() {
