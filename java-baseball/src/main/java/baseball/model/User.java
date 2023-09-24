@@ -41,7 +41,7 @@ public class User {
 
         //숫자를 입력안한경우
         for (int i = 0; i < input.length(); i++) {
-            if(input.charAt(i) < '0' || input.charAt(i) > '9') {
+            if(input.charAt(i) < '1' || input.charAt(i) > '9') {
                 throw new IllegalArgumentException("잘못된 값을 입력하셨습니다.(3자리 자연수가 아닙니다.)");
             }
         }
