@@ -13,50 +13,33 @@ public class Referee {
         return bolNum;
     }
 
-    public void setBolNum(int bolNum) {
-        this.bolNum = bolNum;
-    }
-
     public int getStrikeNum() {
         return strikeNum;
-    }
-
-    public void setStrikeNum(int strikeNum) {
-        this.strikeNum = strikeNum;
     }
 
     public boolean isSuccess() {
         return success;
     }
 
-    public void setSuccess(boolean success) {
-        this.success = success;
-    }
-
     public Referee() {
-        this.bolNum = 0;
-        this.strikeNum = 0;
-        this.success = false;
     }
 
     public void judge(List<Integer> user, List<Integer> computer) {
+        init();
 
-        //같은자리애 같은수 (스트라이크)
-        int strike = 0;
-        for (int i = 0; i < user.size(); i++) {
-            if (user.get(i).equals(computer.get(i))) {
-                strike++;
+        for(int i = 0; i < user.size(); i++) {
+            if(user.get(i).equals(computer.get(i))) {
+                this.strikeNum++;
+            } else if(computer.contains(user.get(i))) {
+                this.bolNum++;
             }
         }
-        setStrikeNum(strike);
+    }
+    public void init() {
+        this.bolNum = 0;
+        this.strikeNum = 0;
+        this.success = false;
 
-        //Set ( 볼 + 스트라이크 )
-        Set setUser = new HashSet<>(user);
-        Set setComputer = new HashSet<>(computer);
-        setUser.retainAll(setComputer);
-
-        //Set - 같은자리에 같은수 (볼)
-        setBolNum(setUser.size() - strike);
     }
 
     public void print() {
