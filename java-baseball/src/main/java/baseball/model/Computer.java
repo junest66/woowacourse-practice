@@ -10,14 +10,6 @@ public class Computer {
     private List<Integer> randomNumbers;
 
     public Computer() {
-        List<Integer> computer = new ArrayList<>();
-        while (computer.size() < 3) {
-            int randomNumber = Randoms.pickNumberInRange(1, 9);
-            if (!computer.contains(randomNumber)) {
-                computer.add(randomNumber);
-            }
-        }
-        this.randomNumbers = computer;
     }
 
     public List<Integer> getRandomNumbers() {
@@ -26,5 +18,16 @@ public class Computer {
 
     public void setRandomNumbers(List<Integer> randomNumbers) {
         this.randomNumbers = randomNumbers;
+    }
+
+    public void makeRandomNumbers() {
+        randomNumbers = new ArrayList<>();
+
+        while (randomNumbers.size() < 3) {
+            int randomNumber = Randoms.pickNumberInRange(1, 9);
+            if (!randomNumbers.contains(randomNumber)) {
+                randomNumbers.add(randomNumber);
+            }
+        }
     }
 }
