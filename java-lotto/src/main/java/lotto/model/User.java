@@ -1,6 +1,7 @@
 package lotto.model;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import lotto.constant.ErrorOutputMessage;
 
 import java.util.*;
 
@@ -33,8 +34,14 @@ public class User {
     }
 
     private void validate(int purchaseMoney) {
+        try {
+            String money = Integer.toString(purchaseMoney);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorOutputMessage.PURCHASE_TYPE);
+        }
+
         if (purchaseMoney % 1000 != 0) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorOutputMessage.PURCHASE_MONEY);
         }
     }
 
@@ -42,18 +49,18 @@ public class User {
         List<Integer> list = new ArrayList<>();
         String[] numbers = lotto.split(",");
         for (String number : numbers) {
-            list.add(Integer.parseInt(number));  //NumberFormat 예외
+            list.add(Integer.parseInt(number));
         }
         this.winningLotto = new Lotto(list);
     }
 
     public void setBonusNumber(int bonusNumber) {
         if (bonusNumber < 1 || bonusNumber > 45) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorOutputMessage.LOTTO_RANGE);
         }
 
         if (this.winningLotto.getNumbers().contains(bonusNumber)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(ErrorOutputMessage.LOTTO_DUPLICATED);
         }
 
         this.bonusNumber = bonusNumber;
