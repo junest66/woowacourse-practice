@@ -3,6 +3,7 @@ package bridge.controller;
 import bridge.BridgeGame;
 import bridge.BridgeMaker;
 import bridge.BridgeRandomNumberGenerator;
+import bridge.Message;
 import bridge.domain.User;
 import bridge.view.InputView;
 import bridge.view.OutputView;
@@ -31,50 +32,40 @@ public class BridgeController {
         while (bridgeGame.getGameStatus() && bridgeGame.getCurrentUpMap().size() < bridge.size()) {
             String inputMoving = inputView.readMoving();
             boolean result = bridge.get(bridgeGame.getCurrentUpMap().size()).equals(inputMoving);
-            if (result) {
-                if (inputMoving.equals("U")) {
-                    bridgeGame.addCurrentUpMap("O");
-                    bridgeGame.addCurrentDownMap(" ");
-                }
-                if (inputMoving.equals("D")) {
-                    bridgeGame.addCurrentDownMap("O");
-                    bridgeGame.addCurrentUpMap(" ");
-                }
-                outputView.printMap(bridgeGame.getCurrentUpMap(), bridgeGame.getCurrentDownMap());
-            }
-            if (!result) {
-                if (inputMoving.equals("U")) {
-                    bridgeGame.addCurrentUpMap("X");
-                    bridgeGame.addCurrentDownMap(" ");
-                }
-                if (inputMoving.equals("D")) {
-                    bridgeGame.addCurrentDownMap("X");
-                    bridgeGame.addCurrentUpMap(" ");
-                }
-                outputView.printMap(bridgeGame.getCurrentUpMap(), bridgeGame.getCurrentDownMap());
-                String restartInput = inputView.readGameCommand();
-                if (restartInput.equals("R")) {
-                    bridgeGame.initCurrentMap();
-                    user.setCurrentCount(user.getCurrentCount() + 1);
-                }
-                if (restartInput.equals("Q")) {
-                    bridgeGame.retry();
-                }
-            }
+            movingTurn(inputMoving, result);
         }
         outputView.printResult(user.getCurrentCount(), bridgeGame, getGameResult(bridgeGame));
 
 
     }
 
+    private void movingTurn(String inputMoving, boolean result) {
+        if (result) {
+            bridgeGame.move(result, inputMoving);
+            outputView.printMap(bridgeGame.getCurrentUpMap(), bridgeGame.getCurrentDownMap());
+        }
+        if (!result) {
+            bridgeGame.move(result, inputMoving);
+            outputView.printMap(bridgeGame.getCurrentUpMap(), bridgeGame.getCurrentDownMap());
+            String restartInput = inputView.readGameCommand();
+            if (restartInput.equals("R")) {
+                bridgeGame.initCurrentMap();
+                user.setCurrentCount(user.getCurrentCount() + 1);
+            }
+            if (restartInput.equals("Q")) {
+                bridgeGame.retry();
+            }
+        }
+    }
+
     public String getGameResult(BridgeGame bridgeGame) {
         if (bridgeGame.getCurrentUpMap().contains("X")) {
-            return "실패";
+            return Message.FAIL;
         }
         if (bridgeGame.getCurrentDownMap().contains("X")) {
-            return "실패";
+            return Message.FAIL;
         }
-        return "성공";
+        return Message.SUCCESS;
     }
 
 }
