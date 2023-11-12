@@ -1,29 +1,29 @@
 package christmas.validator;
 
+import christmas.constants.Messages;
+import christmas.constants.Values;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class MenuOrderValidator {
-    private static final String INVALID_ORDER_MESSAGE = "[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.";
-
     public static void validate(String input) {
-        List<String> items = Arrays.asList(input.split(","));
+        List<String> items = Arrays.asList(input.split(Values.ITEM_SEPARATOR));
         if (isInvalidOrderFormat(items) || hasDuplicateItems(items)) {
-            throw new IllegalArgumentException(INVALID_ORDER_MESSAGE);
+            throw new IllegalArgumentException(Messages.INVALID_ORDER_ERROR_MESSAGE);
         }
     }
 
     private static boolean isInvalidOrderFormat(List<String> items) {
         return items.stream()
-                .anyMatch(item -> !item.matches("[가-힣a-zA-Z]+-\\d+"));
+                .anyMatch(item -> !item.matches(Values.MENU_ITEM_PATTERN));
     }
 
 
     private static boolean hasDuplicateItems(List<String> items) {
         Set<String> uniqueItems = items.stream()
-                .map(item -> item.split("-")[0].trim())
+                .map(item -> item.split(Values.MENU_QUANTITY_SEPARATOR)[0].trim())
                 .collect(Collectors.toSet());
         return uniqueItems.size() < items.size();
     }
