@@ -26,6 +26,8 @@ public class Values {
     public static final int MAX_DATE = 31;
     public static final int MINIMUM_DATE_FOR_EVENT = 1;
     public static final int MAXIMUM_DATE_FOR_EVENT = 31;
+    public static final int MINIMUM_MENU_QUANTITY = 1;
+    public static final int MAXIMUM_TOTAL_QUANTITY = 20;
     public static final int MAXIMUM_DATE_FOR_CHRISTMAS_EVENT = 25;
     public static final int CHRISTMAS_EVENT_START_DISCOUNT = 1000;
     public static final int CHRISTMAS_EVENT_DAILY_ADDITION = 100;
