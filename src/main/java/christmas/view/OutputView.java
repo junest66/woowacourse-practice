@@ -15,14 +15,14 @@ public class OutputView {
         System.out.println(String.format(Messages.EVENT_BENEFITS_PREVIEW_FORMAT, orderDTO.date()));
         System.out.println(Messages.ORDER_MENU_TITLE);
         String menuDetails = orderDTO.menu().entrySet().stream()
-                .map(entry -> String.format(Messages.MENU_ITEM_FORMAT, entry.getKey().name(), entry.getValue()))
+                .map(entry -> String.format(Values.MENU_ITEM_FORMAT, entry.getKey().name(), entry.getValue()))
                 .collect(Collectors.joining("\n", "", "\n"));
         System.out.println(menuDetails);
     }
 
     public void printTotalOrderAmountBeforeDiscount(int amount) {
         System.out.println(Messages.ORDER_AMOUNT_BEFORE_DISCOUNT_MESSAGE);
-        System.out.println(String.format(Messages.FORMATTED_CURRENCY_AMOUNT, amount));
+        System.out.println(String.format(Values.FORMATTED_CURRENCY_AMOUNT, amount));
         System.out.println();
     }
 
@@ -40,21 +40,21 @@ public class OutputView {
             return;
         }
         discountResultDTO.eventResult().entrySet().stream()
-                .map(entry -> String.format(Messages.BENEFIT_DETAILS, entry.getKey(),
-                        String.format(Messages.FORMATTED_CURRENCY_AMOUNT, entry.getValue())))
+                .map(entry -> String.format(Values.BENEFIT_DETAILS, entry.getKey(),
+                        String.format(Values.FORMATTED_CURRENCY_AMOUNT, entry.getValue())))
                 .forEach(System.out::println);
         System.out.println();
     }
 
     public void printTotalDiscountAmount(int amount) {
         System.out.println(Messages.TOTAL_DISCOUNTS_AMOUNT_TITLE);
-        System.out.println(String.format(Messages.FORMATTED_CURRENCY_AMOUNT, amount));
+        System.out.println(String.format(Values.FORMATTED_CURRENCY_AMOUNT, amount));
         System.out.println();
     }
 
     public void printPaymentAmountAfterDiscount(int amount) {
         System.out.println(Messages.TOTAL_AMOUNT_AFTER_DISCOUNT_TITLE);
-        System.out.println(String.format(Messages.FORMATTED_CURRENCY_AMOUNT, amount));
+        System.out.println(String.format(Values.FORMATTED_CURRENCY_AMOUNT, amount));
         System.out.println();
     }
 

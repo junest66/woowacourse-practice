@@ -17,7 +17,9 @@ public class Values {
     public static final String ITEM_SEPARATOR = ",";
     public static final String MENU_QUANTITY_SEPARATOR = "-";
     public static final String MENU_ITEM_PATTERN = "[가-힣a-zA-Z]+-\\d+";
-
+    public static final String FORMATTED_CURRENCY_AMOUNT = "%,d원";
+    public static final String MENU_ITEM_FORMAT = "%s %d개";
+    public static final String BENEFIT_DETAILS = "%s: %s";
 
     public static final List<Integer> starDay = Arrays.asList(3, 10, 17, 24, 25, 31);
     public static final int MINIMUM_TOTAL_ORDER_AMOUNT_FOR_EVENT = 10000;
@@ -52,7 +54,4 @@ public class Values {
     public static final int BADGE_SANTA_REQUIREMENT = 20000;
     public static final int BADGE_TREE_REQUIREMENT = 10000;
     public static final int BADGE_STAR_REQUIREMENT = 5000;
-
-
-
 }
