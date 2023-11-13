@@ -61,7 +61,7 @@ public class OrderController {
                 order = waiter.takeOrder(date, menuOrder);
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
+                outputView.printErrorMessage(e.getMessage());
             }
         }
     }

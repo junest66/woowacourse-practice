@@ -62,4 +62,8 @@ public class OutputView {
         System.out.println(Messages.BADGE_EVENT_TITLE);
         System.out.println(badge);
     }
+
+    public void printErrorMessage(String errorMessage) {
+        System.out.println(errorMessage);
+    }
 }
