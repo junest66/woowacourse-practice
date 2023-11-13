@@ -16,7 +16,14 @@ public class GiveawayEvent implements Event {
     }
 
     @Override
-    public boolean isNotApplicable() {
+    public int calculateDiscount() {
+        if (isNotApplicable()) {
+            return 0;
+        }
+        return Values.CHAMPAGNE_PRICE;
+    }
+
+    private boolean isNotApplicable() {
         if (order.getDate() < Values.MINIMUM_DATE_FOR_EVENT || order.getDate() > Values.MAXIMUM_DATE_FOR_EVENT) {
             return true;
         }
@@ -24,13 +31,5 @@ public class GiveawayEvent implements Event {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public int calculateDiscount() {
-        if (isNotApplicable()) {
-            return 0;
-        }
-        return Values.CHAMPAGNE_PRICE;
     }
 }

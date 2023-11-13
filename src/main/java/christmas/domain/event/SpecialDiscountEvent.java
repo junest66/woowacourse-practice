@@ -16,7 +16,14 @@ public class SpecialDiscountEvent implements Event {
     }
 
     @Override
-    public boolean isNotApplicable() {
+    public int calculateDiscount() {
+        if (isNotApplicable()) {
+            return 0;
+        }
+        return Values.SPECIAL_EVENT_DISCOUNT_AMOUNT;
+    }
+
+    private boolean isNotApplicable() {
         if (order.calculateTotalPriceBeforeDiscount() < Values.MINIMUM_TOTAL_ORDER_AMOUNT_FOR_EVENT) {
             return true;
         }
@@ -27,13 +34,5 @@ public class SpecialDiscountEvent implements Event {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public int calculateDiscount() {
-        if (isNotApplicable()) {
-            return 0;
-        }
-        return Values.SPECIAL_EVENT_DISCOUNT_AMOUNT;
     }
 }

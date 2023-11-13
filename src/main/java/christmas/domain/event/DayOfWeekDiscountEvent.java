@@ -20,17 +20,6 @@ public class DayOfWeekDiscountEvent implements Event {
     }
 
     @Override
-    public boolean isNotApplicable() {
-        if (order.calculateTotalPriceBeforeDiscount() < Values.MINIMUM_TOTAL_ORDER_AMOUNT_FOR_EVENT) {
-            return true;
-        }
-        if (order.getDate() < Values.MINIMUM_DATE_FOR_EVENT || order.getDate() > Values.MAXIMUM_DATE_FOR_EVENT) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public int calculateDiscount() {
         if (isNotApplicable()) {
             return 0;
@@ -42,6 +31,17 @@ public class DayOfWeekDiscountEvent implements Event {
         int dessertCount = order.getMenuCategoryCount(Category.DESSERT);
         return dessertCount * Values.WEEKDAY_DISCOUNT_AMOUNT;
     }
+
+    private boolean isNotApplicable() {
+        if (order.calculateTotalPriceBeforeDiscount() < Values.MINIMUM_TOTAL_ORDER_AMOUNT_FOR_EVENT) {
+            return true;
+        }
+        if (order.getDate() < Values.MINIMUM_DATE_FOR_EVENT || order.getDate() > Values.MAXIMUM_DATE_FOR_EVENT) {
+            return true;
+        }
+        return false;
+    }
+
 
     private boolean isWeekend(Order order) {
         int dayOfWeek = order.getDate() % Values.DAYS_IN_WEEK;

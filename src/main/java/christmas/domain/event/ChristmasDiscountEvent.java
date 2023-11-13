@@ -15,17 +15,6 @@ public class ChristmasDiscountEvent implements Event {
         return Values.CHRISTMAS_EVENT_NAME;
     }
 
-    public boolean isNotApplicable() {
-        if (order.calculateTotalPriceBeforeDiscount() < Values.MINIMUM_TOTAL_ORDER_AMOUNT_FOR_EVENT) {
-            return true;
-        }
-        if (order.getDate() < Values.MINIMUM_DATE_FOR_EVENT
-                || order.getDate() > Values.MAXIMUM_DATE_FOR_CHRISTMAS_EVENT) {
-            return true;
-        }
-        return false;
-    }
-
     @Override
     public int calculateDiscount() {
         if (isNotApplicable()) {
@@ -34,5 +23,16 @@ public class ChristmasDiscountEvent implements Event {
         int startDiscount = Values.CHRISTMAS_EVENT_START_DISCOUNT;
         startDiscount += (order.getDate() - 1) * Values.CHRISTMAS_EVENT_DAILY_ADDITION;
         return startDiscount;
+    }
+
+    private boolean isNotApplicable() {
+        if (order.calculateTotalPriceBeforeDiscount() < Values.MINIMUM_TOTAL_ORDER_AMOUNT_FOR_EVENT) {
+            return true;
+        }
+        if (order.getDate() < Values.MINIMUM_DATE_FOR_EVENT
+                || order.getDate() > Values.MAXIMUM_DATE_FOR_CHRISTMAS_EVENT) {
+            return true;
+        }
+        return false;
     }
 }
