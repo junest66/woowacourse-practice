@@ -39,7 +39,7 @@ public enum MenuItem {
     private static boolean hasInvalidMenuItems(Map<String, Integer> orderHistory) {
         return orderHistory.keySet().stream()
                 .anyMatch(itemName -> Arrays.stream(MenuItem.values())
-                        .noneMatch(menuItem -> menuItem.name().equalsIgnoreCase(itemName)));
+                        .noneMatch(menuItem -> menuItem.name().equals(itemName)));
     }
 
     private static boolean hasInvalidQuantities(Map<String, Integer> orderHistory) {
