@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class OrderController {
+public class EventPlannerController {
 
     private Order order;
     private OutputView outputView;
@@ -30,7 +30,7 @@ public class OrderController {
     private PaymentAmountCalculator paymentCalculator;
     private BadgeCalculator badgeCalculator;
 
-    public OrderController() {
+    public EventPlannerController() {
         this.outputView = new OutputView();
         this.inputView = new InputView();
         this.waiter = new Waiter();
