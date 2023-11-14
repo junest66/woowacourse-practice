@@ -21,7 +21,8 @@ public class Waiter {
     private Order createOrder(int date, Map<String, Integer> orderHistory) {
         Map<MenuItem, Integer> mappedOrder = orderHistory.entrySet().stream()
                 .collect(Collectors.toMap(
-                        e -> MenuItem.valueOf(e.getKey()),
+                        e -> MenuItem.findByKoreanName(e.getKey())
+                                .orElseThrow(() -> new IllegalArgumentException(Messages.INVALID_ORDER_ERROR_MESSAGE)),
                         Map.Entry::getValue
                 ));
         return new Order(date, mappedOrder);

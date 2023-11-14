@@ -1,6 +1,6 @@
 package christmas.domain.event;
 
-import christmas.constants.MenuItem.Category;
+import christmas.constants.MenuCategory;
 import christmas.constants.Values;
 import christmas.domain.Order;
 
@@ -25,10 +25,10 @@ public class DayOfWeekDiscountEvent implements Event {
             return 0;
         }
         if (isWeekend(order)) {
-            int dessertCount = order.getMenuCategoryCount(Category.MAIN);
+            int dessertCount = order.getMenuCategoryCount(MenuCategory.MAIN);
             return dessertCount * Values.WEEKEND_DISCOUNT_AMOUNT;
         }
-        int dessertCount = order.getMenuCategoryCount(Category.DESSERT);
+        int dessertCount = order.getMenuCategoryCount(MenuCategory.DESSERT);
         return dessertCount * Values.WEEKDAY_DISCOUNT_AMOUNT;
     }
 

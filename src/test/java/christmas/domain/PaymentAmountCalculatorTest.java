@@ -17,10 +17,10 @@ class PaymentAmountCalculatorTest {
     @BeforeEach
     void setup() {
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.티본스테이크, 1);
-        menuOrder.put(MenuItem.바비큐립, 1);
-        menuOrder.put(MenuItem.초코케이크, 2);
-        menuOrder.put(MenuItem.제로콜라, 1);
+        menuOrder.put(MenuItem.TBONE_STEAK, 1);
+        menuOrder.put(MenuItem.BBQ_RIBS, 1);
+        menuOrder.put(MenuItem.CHOCO_CAKE, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
         order = new Order(3, menuOrder);
         discountResult.addDiscount(Values.CHRISTMAS_EVENT_NAME, -1200);
         discountResult.addDiscount(Values.WEEKDAY_EVENT_NAME, -4046);

@@ -18,8 +18,8 @@ class SpecialDiscountEventTest {
     void noDiscountForLowTotalOrder() {
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent(order);
         assertThat(specialDiscountEvent.calculateDiscount()).isEqualTo(0);
@@ -30,9 +30,9 @@ class SpecialDiscountEventTest {
     void noDiscountOutsideDiscountPeriod() {
         int date = 32;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
-        menuOrder.put(MenuItem.해산물파스타, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
+        menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent(order);
         assertThat(specialDiscountEvent.calculateDiscount()).isEqualTo(0);
@@ -43,9 +43,9 @@ class SpecialDiscountEventTest {
     @ValueSource(ints = {1, 2, 4, 5, 30})
     void noSpecialDiscountWhenDateNotInEventCalendar(int date) {
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
-        menuOrder.put(MenuItem.해산물파스타, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
+        menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent(order);
         assertThat(specialDiscountEvent.calculateDiscount()).isEqualTo(0);
@@ -57,9 +57,9 @@ class SpecialDiscountEventTest {
     void applySpecialDiscountWhenDateInEventCalendar(int date) {
         int expectedValue = Values.SPECIAL_EVENT_DISCOUNT_AMOUNT;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
-        menuOrder.put(MenuItem.해산물파스타, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
+        menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent(order);
         assertThat(specialDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);

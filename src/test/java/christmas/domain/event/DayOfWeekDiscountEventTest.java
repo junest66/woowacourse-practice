@@ -17,8 +17,8 @@ class DayOfWeekDiscountEventTest {
         String expectedValue = Values.WEEKEND_EVENT_NAME;
         int date = 2;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
         assertThat(dayOfWeekDiscountEvent.getEventName()).isEqualTo(expectedValue);
@@ -30,8 +30,8 @@ class DayOfWeekDiscountEventTest {
         String expectedValue = Values.WEEKDAY_EVENT_NAME;
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
         assertThat(dayOfWeekDiscountEvent.getEventName()).isEqualTo(expectedValue);
@@ -42,8 +42,8 @@ class DayOfWeekDiscountEventTest {
     void noDiscountForLowTotalOrder() {
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
         assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(0);
@@ -54,9 +54,9 @@ class DayOfWeekDiscountEventTest {
     void noDiscountOutsideDiscountPeriod() {
         int date = 32;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
-        menuOrder.put(MenuItem.해산물파스타, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
+        menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
         assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(0);
@@ -68,10 +68,10 @@ class DayOfWeekDiscountEventTest {
         int expectedValue = 4046;
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
-        menuOrder.put(MenuItem.초코케이크, 1);
-        menuOrder.put(MenuItem.아이스크림, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
+        menuOrder.put(MenuItem.CHOCO_CAKE, 1);
+        menuOrder.put(MenuItem.ICE_CREAM, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
         assertThat(dayOfWeekDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
@@ -83,8 +83,8 @@ class DayOfWeekDiscountEventTest {
         int expectedValue = 0;
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
         assertThat(dayOfWeekDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
@@ -96,10 +96,10 @@ class DayOfWeekDiscountEventTest {
         int expectedValue = 4046;
         int date = 1;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
-        menuOrder.put(MenuItem.티본스테이크, 1);
-        menuOrder.put(MenuItem.바비큐립, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
+        menuOrder.put(MenuItem.TBONE_STEAK, 1);
+        menuOrder.put(MenuItem.BBQ_RIBS, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
         assertThat(dayOfWeekDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
@@ -111,8 +111,8 @@ class DayOfWeekDiscountEventTest {
         int expectedValue = 0;
         int date = 2;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
         assertThat(dayOfWeekDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);

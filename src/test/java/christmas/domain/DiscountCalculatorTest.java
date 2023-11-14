@@ -24,10 +24,10 @@ class DiscountCalculatorTest {
     @BeforeEach
     void setUp() {
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.티본스테이크, 1);
-        menuOrder.put(MenuItem.바비큐립, 1);
-        menuOrder.put(MenuItem.초코케이크, 2);
-        menuOrder.put(MenuItem.제로콜라, 1);
+        menuOrder.put(MenuItem.TBONE_STEAK, 1);
+        menuOrder.put(MenuItem.BBQ_RIBS, 1);
+        menuOrder.put(MenuItem.CHOCO_CAKE, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
         order = new Order(3, menuOrder);
         events = Arrays.asList(new ChristmasDiscountEvent(order), new DayOfWeekDiscountEvent(order),
                 new SpecialDiscountEvent(order), new GiveawayEvent(order));

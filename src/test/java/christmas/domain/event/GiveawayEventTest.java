@@ -16,8 +16,8 @@ class GiveawayEventTest {
     void noGiveawayForOrderBelowTwelveThousand() {
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 2);
-        menuOrder.put(MenuItem.타파스, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 2);
+        menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         GiveawayEvent giveawayEvent = new GiveawayEvent(order);
         assertThat(giveawayEvent.calculateDiscount()).isEqualTo(0);
@@ -28,9 +28,9 @@ class GiveawayEventTest {
     void noGiveawayOutsideEligibleDates() {
         int date = 32;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
-        menuOrder.put(MenuItem.해산물파스타, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
+        menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         GiveawayEvent giveawayEvent = new GiveawayEvent(order);
         assertThat(giveawayEvent.calculateDiscount()).isEqualTo(0);
@@ -42,8 +42,8 @@ class GiveawayEventTest {
         int expectedValue = Values.CHAMPAGNE_PRICE;
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 2);
-        menuOrder.put(MenuItem.타파스, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 2);
+        menuOrder.put(MenuItem.TAPAS, 2);
         Order order = new Order(date, menuOrder);
         GiveawayEvent giveawayEvent = new GiveawayEvent(order);
         assertThat(giveawayEvent.calculateDiscount()).isEqualTo(expectedValue);

@@ -15,8 +15,8 @@ class ChristmasDiscountEventTest {
     void noDiscountForLowTotalOrder() {
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
         assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(0);
@@ -27,9 +27,9 @@ class ChristmasDiscountEventTest {
     void noDiscountOutsideDiscountPeriod() {
         int date = 26;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.제로콜라, 1);
-        menuOrder.put(MenuItem.타파스, 1);
-        menuOrder.put(MenuItem.해산물파스타, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 1);
+        menuOrder.put(MenuItem.TAPAS, 1);
+        menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
         assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(0);
@@ -41,10 +41,10 @@ class ChristmasDiscountEventTest {
         int expectedValue = 1200;
         int date = 3;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.티본스테이크, 1);
-        menuOrder.put(MenuItem.바비큐립, 1);
-        menuOrder.put(MenuItem.초코케이크, 2);
-        menuOrder.put(MenuItem.제로콜라, 2);
+        menuOrder.put(MenuItem.TBONE_STEAK, 1);
+        menuOrder.put(MenuItem.BBQ_RIBS, 1);
+        menuOrder.put(MenuItem.CHOCO_CAKE, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 2);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
         assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
@@ -56,10 +56,10 @@ class ChristmasDiscountEventTest {
         int expectedValue = 3400;
         int date = 25;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.티본스테이크, 1);
-        menuOrder.put(MenuItem.바비큐립, 1);
-        menuOrder.put(MenuItem.초코케이크, 2);
-        menuOrder.put(MenuItem.제로콜라, 2);
+        menuOrder.put(MenuItem.TBONE_STEAK, 1);
+        menuOrder.put(MenuItem.BBQ_RIBS, 1);
+        menuOrder.put(MenuItem.CHOCO_CAKE, 2);
+        menuOrder.put(MenuItem.ZERO_COLA, 2);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
         assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);

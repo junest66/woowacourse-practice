@@ -19,8 +19,8 @@ class EventsFactoryTest {
     @Test
     void testCreateEvents() {
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.해산물파스타, 5);
-        menuOrder.put(MenuItem.제로콜라, 2);
+        menuOrder.put(MenuItem.SEAFOOD_PASTA, 5);
+        menuOrder.put(MenuItem.ZERO_COLA, 2);
         Order order = new Order(3, menuOrder);
         EventsFactory eventsFactory = new EventsFactory(order);
         List<Event> events = eventsFactory.createEvents();

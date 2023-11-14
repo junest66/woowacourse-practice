@@ -48,9 +48,9 @@ class WaiterTest {
         menuOrderHistory.put("제로콜라", 2);
         menuOrderHistory.put("타파스", 1);
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
-        menuOrder.put(MenuItem.해산물파스타, 5);
-        menuOrder.put(MenuItem.제로콜라, 2);
-        menuOrder.put(MenuItem.타파스, 1);
+        menuOrder.put(MenuItem.SEAFOOD_PASTA, 5);
+        menuOrder.put(MenuItem.ZERO_COLA, 2);
+        menuOrder.put(MenuItem.TAPAS, 1);
         Waiter waiter = new Waiter();
         Order order = waiter.takeOrder(date, menuOrderHistory);
         assertThat(order).isEqualToComparingFieldByField(new Order(5, menuOrder));

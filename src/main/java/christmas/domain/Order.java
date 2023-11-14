@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import christmas.constants.MenuItem;
-import christmas.constants.MenuItem.Category;
+import christmas.constants.MenuCategory;
 import java.util.Map;
 
 public class Order {
@@ -13,9 +13,9 @@ public class Order {
         this.menu = menu;
     }
 
-    public int getMenuCategoryCount(Category category) {
+    public int getMenuCategoryCount(MenuCategory menuCategory) {
         return menu.entrySet().stream()
-                .filter(entry -> entry.getKey().getCategory() == category)
+                .filter(entry -> entry.getKey().getMenuCategory() == menuCategory)
                 .mapToInt(Map.Entry::getValue)
                 .sum();
     }

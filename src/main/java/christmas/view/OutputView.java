@@ -15,7 +15,7 @@ public class OutputView {
         System.out.println(String.format(Messages.EVENT_BENEFITS_PREVIEW_FORMAT, orderDTO.date()));
         System.out.println(Messages.ORDER_MENU_TITLE);
         String menuDetails = orderDTO.menu().entrySet().stream()
-                .map(entry -> String.format(Values.MENU_ITEM_FORMAT, entry.getKey().name(), entry.getValue()))
+                .map(entry -> String.format(Values.MENU_ITEM_FORMAT, entry.getKey().getKoreanName(), entry.getValue()))
                 .collect(Collectors.joining("\n", "", "\n"));
         System.out.println(menuDetails);
     }
