@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.constants.EventType;
 import christmas.constants.MenuItem;
-import christmas.constants.Values;
 import christmas.domain.event.ChristmasDiscountEvent;
 import christmas.domain.event.DayOfWeekDiscountEvent;
 import christmas.domain.event.Event;

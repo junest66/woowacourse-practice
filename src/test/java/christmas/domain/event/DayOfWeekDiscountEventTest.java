@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.constants.EventType;
 import christmas.constants.MenuItem;
-import christmas.constants.Values;
 import christmas.domain.Order;
 import java.util.HashMap;
 import java.util.Map;
