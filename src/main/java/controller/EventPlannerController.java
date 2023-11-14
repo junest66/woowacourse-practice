@@ -5,17 +5,13 @@ import christmas.DTO.OrderDTO;
 import christmas.domain.BadgeCalculator;
 import christmas.domain.DiscountCalculator;
 import christmas.domain.DiscountResult;
+import christmas.domain.EventsFactory;
 import christmas.domain.Order;
 import christmas.domain.PaymentAmountCalculator;
 import christmas.domain.Waiter;
-import christmas.domain.event.ChristmasDiscountEvent;
-import christmas.domain.event.DayOfWeekDiscountEvent;
 import christmas.domain.event.Event;
-import christmas.domain.event.GiveawayEvent;
-import christmas.domain.event.SpecialDiscountEvent;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,10 +36,11 @@ public class EventPlannerController {
 
     public void start() {
         outputView.printEventStartGreeting();
-        processOrder();
+        order = processOrder();
         outputView.printOrderInformation(new OrderDTO(order));
         outputView.printTotalOrderAmountBeforeDiscount(order.calculateTotalPriceBeforeDiscount());
-        initializeDiscountEvents();
+        List<Event> events = new EventsFactory(order).createEvents();
+        discountCalculator = new DiscountCalculator(events);
         discountResult = discountCalculator.calculateDiscount();
         outputView.printGiveawayMenu(discountResult.getGiveawayMenu());
         outputView.printDiscountResult(new DiscountResultDTO(discountResult));
@@ -53,25 +50,15 @@ public class EventPlannerController {
         outputView.printBadgeResult(badgeCalculator.calculateBadge(discountResult));
     }
 
-    private void processOrder() {
+    private Order processOrder() {
         int date = inputView.getDecemberDay();
         while (true) {
             Map<String, Integer> menuOrder = inputView.getMenuOrder();
             try {
-                order = waiter.takeOrder(date, menuOrder);
-                break;
+                return waiter.takeOrder(date, menuOrder);
             } catch (IllegalArgumentException e) {
                 outputView.printErrorMessage(e.getMessage());
             }
         }
-    }
-
-    private void initializeDiscountEvents() {
-        List<Event> events = new ArrayList<>();
-        events.add(new ChristmasDiscountEvent(order));
-        events.add(new DayOfWeekDiscountEvent(order));
-        events.add(new SpecialDiscountEvent(order));
-        events.add(new GiveawayEvent(order));
-        discountCalculator = new DiscountCalculator(events);
     }
 }
