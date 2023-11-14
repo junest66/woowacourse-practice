@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.constants.EventType;
 import christmas.constants.MenuItem;
 import christmas.constants.Values;
 import christmas.domain.event.ChristmasDiscountEvent;
@@ -38,10 +39,10 @@ class DiscountCalculatorTest {
     void shouldCalculateTotalDiscountsCorrectly() {
         DiscountCalculator discountCalculator = new DiscountCalculator(events);
         DiscountResult expectedResult = new DiscountResult();
-        expectedResult.addDiscount(Values.CHRISTMAS_EVENT_NAME, -1200);
-        expectedResult.addDiscount(Values.WEEKDAY_EVENT_NAME, -4046);
-        expectedResult.addDiscount(Values.SPECIAL_EVENT_NAME, -1000);
-        expectedResult.addDiscount(Values.GIVEAWAY_EVENT_NAME, -25000);
+        expectedResult.addDiscount(EventType.CHRISTMAS.getDisplayName(), -1200);
+        expectedResult.addDiscount(EventType.WEEKDAY.getDisplayName(), -4046);
+        expectedResult.addDiscount(EventType.SPECIAL.getDisplayName(), -1000);
+        expectedResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), -25000);
         assertThat(discountCalculator.calculateDiscount()).isEqualToComparingFieldByField(expectedResult);
     }
 

@@ -2,6 +2,7 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.constants.EventType;
 import christmas.constants.Values;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -12,16 +13,16 @@ class DiscountResultTest {
 
     @BeforeEach
     void setup() {
-        discountResult.addDiscount(Values.CHRISTMAS_EVENT_NAME, -1200);
-        discountResult.addDiscount(Values.WEEKDAY_EVENT_NAME, -4046);
-        discountResult.addDiscount(Values.SPECIAL_EVENT_NAME, -1000);
-        discountResult.addDiscount(Values.GIVEAWAY_EVENT_NAME, -25000);
+        discountResult.addDiscount(EventType.CHRISTMAS.getDisplayName(), -1200);
+        discountResult.addDiscount(EventType.WEEKDAY.getDisplayName(), -4046);
+        discountResult.addDiscount(EventType.SPECIAL.getDisplayName(), -1000);
+        discountResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), -25000);
     }
 
     @DisplayName("addDiscount 메서드가 할인 정보를 정확히 추가한다")
     @Test
     void addDiscountShouldAddCorrectDiscountInfo() {
-        String eventName = Values.WEEKDAY_EVENT_NAME;
+        String eventName = EventType.WEEKDAY.getDisplayName();
         int discountAmount = -4046;
         DiscountResult tempDiscountResult = new DiscountResult();
         tempDiscountResult.addDiscount(eventName, discountAmount);
@@ -52,7 +53,7 @@ class DiscountResultTest {
     @DisplayName("증정 이벤트의 혜택이 0이면 증정메뉴는 '없음' 이다.")
     @Test
     void shouldReturnNoneWhenGiveawayBenefitIsZero() {
-        discountResult.addDiscount(Values.GIVEAWAY_EVENT_NAME, 0);
+        discountResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), 0);
         String expectedValue = Values.NOT_EXIST;
         assertThat(discountResult.getGiveawayMenu()).isEqualTo(expectedValue);
     }

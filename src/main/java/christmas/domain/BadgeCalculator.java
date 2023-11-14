@@ -1,19 +1,20 @@
 package christmas.domain;
 
+import christmas.constants.Badge;
 import christmas.constants.Values;
 
 public class BadgeCalculator {
     public String calculateBadge(DiscountResult discountResult) {
         int totalDiscountAmount = discountResult.getTotalAllDiscountAmount() * -1;
 
-        if (totalDiscountAmount >= Values.BADGE_SANTA_REQUIREMENT) {
-            return Values.BADGE_SANTA;
+        if (totalDiscountAmount >= Badge.SANTA.getRequirement()) {
+            return Badge.SANTA.getName();
         }
-        if (totalDiscountAmount >= Values.BADGE_TREE_REQUIREMENT) {
-            return Values.BADGE_TREE;
+        if (totalDiscountAmount >= Badge.TREE.getRequirement()) {
+            return Badge.TREE.getName();
         }
-        if (totalDiscountAmount >= Values.BADGE_STAR_REQUIREMENT) {
-            return Values.BADGE_STAR;
+        if (totalDiscountAmount >= Badge.STAR.getRequirement()) {
+            return Badge.STAR.getName();
         }
         return Values.NOT_EXIST;
     }

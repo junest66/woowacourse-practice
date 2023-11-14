@@ -2,6 +2,7 @@ package christmas.domain.event;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.constants.EventType;
 import christmas.constants.MenuItem;
 import christmas.constants.Values;
 import christmas.domain.Order;
@@ -14,7 +15,7 @@ class DayOfWeekDiscountEventTest {
     @DisplayName("주말이면 적용 되는 이벤트 이름은 '주말 할인'이다")
     @Test
     void verifyWeekendEventName() {
-        String expectedValue = Values.WEEKEND_EVENT_NAME;
+        String expectedValue = EventType.WEEKEND.getDisplayName();
         int date = 2;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
         menuOrder.put(MenuItem.ZERO_COLA, 1);
@@ -27,7 +28,7 @@ class DayOfWeekDiscountEventTest {
     @DisplayName("평일이면 적용 되는 이벤트 이름은 '평일 할인'이다")
     @Test
     void verifyWeekdayEventName() {
-        String expectedValue = Values.WEEKDAY_EVENT_NAME;
+        String expectedValue = EventType.WEEKDAY.getDisplayName();
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
         menuOrder.put(MenuItem.ZERO_COLA, 1);

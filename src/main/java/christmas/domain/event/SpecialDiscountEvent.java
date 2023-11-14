@@ -1,5 +1,6 @@
 package christmas.domain.event;
 
+import christmas.constants.EventType;
 import christmas.constants.Values;
 import christmas.domain.Order;
 
@@ -12,7 +13,7 @@ public class SpecialDiscountEvent implements Event {
 
     @Override
     public String getEventName() {
-        return Values.SPECIAL_EVENT_NAME;
+        return EventType.SPECIAL.getDisplayName();
     }
 
     @Override

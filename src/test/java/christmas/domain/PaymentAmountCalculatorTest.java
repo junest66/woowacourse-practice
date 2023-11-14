@@ -2,8 +2,10 @@ package christmas.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import christmas.constants.EventType;
 import christmas.constants.MenuItem;
 import christmas.constants.Values;
+import christmas.domain.event.Event;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,10 +24,10 @@ class PaymentAmountCalculatorTest {
         menuOrder.put(MenuItem.CHOCO_CAKE, 2);
         menuOrder.put(MenuItem.ZERO_COLA, 1);
         order = new Order(3, menuOrder);
-        discountResult.addDiscount(Values.CHRISTMAS_EVENT_NAME, -1200);
-        discountResult.addDiscount(Values.WEEKDAY_EVENT_NAME, -4046);
-        discountResult.addDiscount(Values.SPECIAL_EVENT_NAME, -1000);
-        discountResult.addDiscount(Values.GIVEAWAY_EVENT_NAME, -25000);
+        discountResult.addDiscount(EventType.CHRISTMAS.getDisplayName(), -1200);
+        discountResult.addDiscount(EventType.WEEKDAY.getDisplayName(), -4046);
+        discountResult.addDiscount(EventType.SPECIAL.getDisplayName(), -1000);
+        discountResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), -25000);
     }
 
     @DisplayName("지불 금액을 계산한다")

@@ -3,7 +3,6 @@ package christmas.domain.event;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import christmas.constants.MenuItem;
-import christmas.constants.Values;
 import christmas.domain.Order;
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +38,7 @@ class GiveawayEventTest {
     @DisplayName("증정 이벤트 조건이 충족되면 혜택 금액은 샴페인 1개 가격인 25000원이다.")
     @Test
     void verifyBenefitAmountForEligibleGiveawayEvent() {
-        int expectedValue = Values.CHAMPAGNE_PRICE;
+        int expectedValue = MenuItem.CHAMPAGNE.getPrice();
         int date = 5;
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
         menuOrder.put(MenuItem.ZERO_COLA, 2);

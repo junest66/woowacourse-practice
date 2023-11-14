@@ -1,5 +1,7 @@
 package christmas.domain.event;
 
+import christmas.constants.EventType;
+import christmas.constants.MenuItem;
 import christmas.constants.Values;
 import christmas.domain.Order;
 
@@ -8,7 +10,7 @@ public class GiveawayEvent implements Event {
 
     @Override
     public String getEventName() {
-        return Values.GIVEAWAY_EVENT_NAME;
+        return EventType.GIVEAWAY.getDisplayName();
     }
 
     public GiveawayEvent(Order order) {
@@ -20,7 +22,7 @@ public class GiveawayEvent implements Event {
         if (isNotApplicable()) {
             return 0;
         }
-        return Values.CHAMPAGNE_PRICE;
+        return MenuItem.CHAMPAGNE.getPrice();
     }
 
     private boolean isNotApplicable() {

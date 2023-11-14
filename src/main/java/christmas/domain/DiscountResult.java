@@ -1,5 +1,6 @@
 package christmas.domain;
 
+import christmas.constants.EventType;
 import christmas.constants.Values;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,13 +22,13 @@ public class DiscountResult {
 
     public int getTotalDiscountAmountExcludingGiveaway() {
         return eventResult.entrySet().stream()
-                .filter(entry -> !entry.getKey().equals(Values.GIVEAWAY_EVENT_NAME))
+                .filter(entry -> !entry.getKey().equals(EventType.GIVEAWAY.getDisplayName()))
                 .mapToInt(Map.Entry::getValue)
                 .sum();
     }
 
     public String getGiveawayMenu() {
-        int giveawayDiscountAmount = eventResult.get(Values.GIVEAWAY_EVENT_NAME);
+        int giveawayDiscountAmount = eventResult.get(EventType.GIVEAWAY.getDisplayName());
         if (giveawayDiscountAmount == 0) {
             return Values.NOT_EXIST;
         }

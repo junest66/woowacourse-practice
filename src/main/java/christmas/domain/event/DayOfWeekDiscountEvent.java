@@ -1,5 +1,6 @@
 package christmas.domain.event;
 
+import christmas.constants.EventType;
 import christmas.constants.MenuCategory;
 import christmas.constants.Values;
 import christmas.domain.Order;
@@ -14,9 +15,9 @@ public class DayOfWeekDiscountEvent implements Event {
     @Override
     public String getEventName() {
         if (isWeekend(order)) {
-            return Values.WEEKEND_EVENT_NAME;
+            return EventType.WEEKEND.getDisplayName();
         }
-        return Values.WEEKDAY_EVENT_NAME;
+        return EventType.WEEKDAY.getDisplayName();
     }
 
     @Override
