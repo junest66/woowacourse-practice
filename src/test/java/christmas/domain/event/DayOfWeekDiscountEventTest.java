@@ -37,7 +37,7 @@ class DayOfWeekDiscountEventTest {
         assertThat(dayOfWeekDiscountEvent.getEventName()).isEqualTo(expectedValue);
     }
 
-    @DisplayName("총 주문 금액이 만원이 안될시 할인금액은 0원이다.")
+    @DisplayName("총 주문 금액이 만원이 안될시 혜택금액은 0원이다.")
     @Test
     void noDiscountForLowTotalOrder() {
         int date = 5;
@@ -49,7 +49,7 @@ class DayOfWeekDiscountEventTest {
         assertThat(christmasDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
-    @DisplayName("날짜가 1일과 31일사이가 아니라면 할인금액은 0원이다.")
+    @DisplayName("날짜가 1일과 31일사이가 아니라면 혜택금액은 0원이다.")
     @Test
     void noDiscountOutsideDiscountPeriod() {
         int date = 32;

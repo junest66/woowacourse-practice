@@ -43,7 +43,7 @@ public class OutputView {
     }
 
     private static void printNonZeroBenefitEvents(BenefitResultDTO benefitResultDTO) {
-        benefitResultDTO.eventResult().entrySet().stream()
+        benefitResultDTO.benefitResult().entrySet().stream()
                 .filter(entry -> entry.getValue() != 0)
                 .map(entry -> String.format(Values.BENEFIT_DETAILS, entry.getKey(),
                         String.format(Values.FORMATTED_CURRENCY_AMOUNT, entry.getValue())))

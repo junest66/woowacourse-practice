@@ -13,7 +13,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 class SpecialDiscountEventTest {
-    @DisplayName("총 주문 금액이 만원이 안될시 할인금액은 0원이다.")
+    @DisplayName("총 주문 금액이 만원이 안될시 혜택금액은 0원이다.")
     @Test
     void noDiscountForLowTotalOrder() {
         int date = 5;
@@ -25,7 +25,7 @@ class SpecialDiscountEventTest {
         assertThat(specialDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
-    @DisplayName("날짜가 1일과 31일사이가 아니라면 할인금액은 0원이다.")
+    @DisplayName("날짜가 1일과 31일사이가 아니라면 혜택금액은 0원이다.")
     @Test
     void noDiscountOutsideDiscountPeriod() {
         int date = 32;
@@ -38,7 +38,7 @@ class SpecialDiscountEventTest {
         assertThat(specialDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
-    @DisplayName("날짜가 이벤트 달력에 없으면 할인금액은 0원이다.")
+    @DisplayName("날짜가 이벤트 달력에 없으면 혜택금액은 0원이다.")
     @ParameterizedTest
     @ValueSource(ints = {1, 2, 4, 5, 30})
     void noSpecialDiscountWhenDateNotInEventCalendar(int date) {

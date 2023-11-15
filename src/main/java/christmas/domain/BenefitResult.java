@@ -28,8 +28,8 @@ public class BenefitResult {
     }
 
     public String getGiveawayMenu() {
-        int giveawayDiscountAmount = benefitResult.get(EventType.GIVEAWAY.getDisplayName());
-        if (giveawayDiscountAmount == 0) {
+        int giveawayBenefitAmount = benefitResult.get(EventType.GIVEAWAY.getDisplayName());
+        if (giveawayBenefitAmount == 0) {
             return Values.NOT_EXIST;
         }
         return Values.GIVEAWAY_EVENT_ITEMS;

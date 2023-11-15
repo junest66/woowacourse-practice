@@ -19,7 +19,7 @@ class BenefitResultTest {
         benefitResult.addBenefit(EventType.GIVEAWAY.getDisplayName(), -25000);
     }
 
-    @DisplayName("addDiscount 메서드가 할인 정보를 정확히 추가한다")
+    @DisplayName("addBenefit 메서드가 혜택 정보를 정확히 추가한다")
     @Test
     void addDiscountShouldAddCorrectDiscountInfo() {
         String eventName = EventType.WEEKDAY.getDisplayName();
@@ -31,14 +31,14 @@ class BenefitResultTest {
 
     @DisplayName("전체 혜택금액을 계산한다")
     @Test
-    void shouldCorrectlyCalculateTotalDiscountAmount() {
+    void shouldCorrectlyCalculateTotalBenefitAmount() {
         int expectedValue = -31246;
         assertThat(benefitResult.getTotalAllBenefitAmount()).isEqualTo(expectedValue);
     }
 
     @DisplayName("전체 할인금액을 계산한다")
     @Test
-    void shouldCorrectlyCalculateTotalDiscountAmountExcludingGiveaway() {
+    void shouldCorrectlyCalculateTotalDiscountAmount() {
         int expectedValue = -6246;
         assertThat(benefitResult.getTotalDiscountAmount()).isEqualTo(expectedValue);
     }
