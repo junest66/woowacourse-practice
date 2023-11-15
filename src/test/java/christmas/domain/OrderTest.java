@@ -35,8 +35,9 @@ class OrderTest {
         menuOrder.put(MenuItem.TAPAS, 1);
         menuOrder.put(MenuItem.RED_WINE, 1);
         Order order = new Order(date, menuOrder);
-        int expectedValue = MenuItem.SEAFOOD_PASTA.getPrice() * 5 + MenuItem.ZERO_COLA.getPrice() * 2 + MenuItem.TAPAS.getPrice()
-                + MenuItem.RED_WINE.getPrice();
+        int expectedValue =
+                MenuItem.SEAFOOD_PASTA.getPrice() * 5 + MenuItem.ZERO_COLA.getPrice() * 2 + MenuItem.TAPAS.getPrice()
+                        + MenuItem.RED_WINE.getPrice();
         assertThat(order.calculateTotalPriceBeforeDiscount()).isEqualTo(expectedValue);
     }
 }

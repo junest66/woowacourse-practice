@@ -44,5 +44,4 @@ class DiscountCalculatorTest {
         expectedResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), -25000);
         assertThat(discountCalculator.calculateDiscount()).isEqualToComparingFieldByField(expectedResult);
     }
-
 }

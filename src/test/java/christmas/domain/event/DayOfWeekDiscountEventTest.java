@@ -117,5 +117,4 @@ class DayOfWeekDiscountEventTest {
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
         assertThat(dayOfWeekDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
     }
-
 }

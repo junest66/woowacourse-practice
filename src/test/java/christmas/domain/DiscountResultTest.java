@@ -57,5 +57,4 @@ class DiscountResultTest {
         String expectedValue = Values.NOT_EXIST;
         assertThat(discountResult.getGiveawayMenu()).isEqualTo(expectedValue);
     }
-
 }

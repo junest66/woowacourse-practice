@@ -6,7 +6,6 @@ import christmas.constants.Values;
 public class BadgeCalculator {
     public String calculateBadge(DiscountResult discountResult) {
         int totalDiscountAmount = discountResult.getTotalAllDiscountAmount() * -1;
-
         if (totalDiscountAmount >= Badge.SANTA.getRequirement()) {
             return Badge.SANTA.getName();
         }

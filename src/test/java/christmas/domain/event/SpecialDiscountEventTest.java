@@ -64,5 +64,4 @@ class SpecialDiscountEventTest {
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent(order);
         assertThat(specialDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
     }
-
 }

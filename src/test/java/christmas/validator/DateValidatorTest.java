@@ -43,5 +43,4 @@ class DateValidatorTest {
     void validateValidDateInput(String input) {
         assertDoesNotThrow(() -> DateValidator.validate(input));
     }
-
 }

@@ -36,5 +36,4 @@ class PaymentAmountCalculatorTest {
         int paymentAmount = paymentAmountCalculator.calculatePaymentAmount(order, discountResult);
         assertThat(paymentAmount).isEqualTo(expectedValue);
     }
-
 }
