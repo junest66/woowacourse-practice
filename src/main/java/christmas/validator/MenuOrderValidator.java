@@ -9,10 +9,17 @@ import java.util.stream.Collectors;
 
 public class MenuOrderValidator {
     public static void validate(String input) {
+        if (endsWithSeparator(input)) {
+            throw new IllegalArgumentException(Messages.INVALID_ORDER_ERROR_MESSAGE);
+        }
         List<String> items = Arrays.asList(input.split(Values.ITEM_SEPARATOR));
         if (isInvalidOrderFormat(items) || hasDuplicateItems(items)) {
             throw new IllegalArgumentException(Messages.INVALID_ORDER_ERROR_MESSAGE);
         }
+    }
+
+    private static boolean endsWithSeparator(String input) {
+        return input.endsWith(Values.ITEM_SEPARATOR);
     }
 
     private static boolean isInvalidOrderFormat(List<String> items) {
