@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -18,6 +19,15 @@ class MenuOrderValidatorTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(INVALID_ORDER_MESSAGE);
 
+    }
+
+    @DisplayName("입력받은 문자열 마지막이 구분자이면 예외가 발생한다")
+    @Test
+    void shouldThrowExceptionWhenInputEndsWithSeparator() {
+        String input = "타파스-1,제로콜라-1,";
+        assertThatThrownBy(() -> MenuOrderValidator.validate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_ORDER_MESSAGE);
     }
 
     @DisplayName("메뉴주문에서 중복된 메뉴가 있으면 예외가 발생한다.")
