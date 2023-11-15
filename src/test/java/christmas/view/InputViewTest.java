@@ -32,7 +32,7 @@ class InputViewTest {
 
     @DisplayName("사용자에 날짜를 입력받아 Integer형으로 반환한다.")
     @Test
-    void func() {
+    void shouldReturnDateFromUserInput() {
         String input = "10";
         int expectedValue = 10;
         System.setIn(new ByteArrayInputStream(input.getBytes()));
@@ -42,7 +42,7 @@ class InputViewTest {
 
     @DisplayName("사용자에 메뉴주문을 입력받아 Map<String,Integer> 으로 반환한다.")
     @Test
-    void func1() {
+    void shouldReturnMenuOrderFromUserInput() {
         String input = "타파스-1,해물파스타-2";
         Map<String, Integer> expectedValue = new HashMap<>();
         expectedValue.put("타파스", 1);
