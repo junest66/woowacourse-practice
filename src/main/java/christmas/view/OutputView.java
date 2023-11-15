@@ -39,7 +39,12 @@ public class OutputView {
             System.out.println();
             return;
         }
+        printNonZeroDiscountEvents(discountResultDTO);
+    }
+
+    private static void printNonZeroDiscountEvents(DiscountResultDTO discountResultDTO) {
         discountResultDTO.eventResult().entrySet().stream()
+                .filter(entry -> entry.getValue() != 0)
                 .map(entry -> String.format(Values.BENEFIT_DETAILS, entry.getKey(),
                         String.format(Values.FORMATTED_CURRENCY_AMOUNT, entry.getValue())))
                 .forEach(System.out::println);
