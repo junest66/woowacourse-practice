@@ -15,7 +15,7 @@ public class Values {
 
     public static final List<Integer> starDay = Arrays.asList(3, 10, 17, 24, 25, 31);
     public static final int MINIMUM_TOTAL_ORDER_AMOUNT_FOR_EVENT = 10000;
-    public static final int MINIMUM_TOTAL_ORDER_AMOUNT_FOR_GIVEAWAY_EVENT = 12000;
+    public static final int MINIMUM_TOTAL_ORDER_AMOUNT_FOR_GIVEAWAY_EVENT = 120000;
     public static final int MIN_DATE = 1;
     public static final int MAX_DATE = 31;
     public static final int MINIMUM_DATE_FOR_EVENT = 1;

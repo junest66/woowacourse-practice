@@ -43,6 +43,7 @@ class GiveawayEventTest {
         Map<MenuItem, Integer> menuOrder = new HashMap<>();
         menuOrder.put(MenuItem.ZERO_COLA, 2);
         menuOrder.put(MenuItem.TAPAS, 2);
+        menuOrder.put(MenuItem.TBONE_STEAK, 2);
         Order order = new Order(date, menuOrder);
         GiveawayEvent giveawayEvent = new GiveawayEvent(order);
         assertThat(giveawayEvent.calculateDiscount()).isEqualTo(expectedValue);
