@@ -18,7 +18,7 @@ public class GiveawayEvent implements Event {
     }
 
     @Override
-    public int calculateDiscount() {
+    public int calculateBenefit() {
         if (isNotApplicable()) {
             return 0;
         }

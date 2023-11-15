@@ -21,7 +21,7 @@ public class DayOfWeekDiscountEvent implements Event {
     }
 
     @Override
-    public int calculateDiscount() {
+    public int calculateBenefit() {
         if (isNotApplicable()) {
             return 0;
         }

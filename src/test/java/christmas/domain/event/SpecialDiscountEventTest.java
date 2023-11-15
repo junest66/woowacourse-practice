@@ -22,7 +22,7 @@ class SpecialDiscountEventTest {
         menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent(order);
-        assertThat(specialDiscountEvent.calculateDiscount()).isEqualTo(0);
+        assertThat(specialDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
     @DisplayName("날짜가 1일과 31일사이가 아니라면 할인금액은 0원이다.")
@@ -35,7 +35,7 @@ class SpecialDiscountEventTest {
         menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent(order);
-        assertThat(specialDiscountEvent.calculateDiscount()).isEqualTo(0);
+        assertThat(specialDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
     @DisplayName("날짜가 이벤트 달력에 없으면 할인금액은 0원이다.")
@@ -48,7 +48,7 @@ class SpecialDiscountEventTest {
         menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent(order);
-        assertThat(specialDiscountEvent.calculateDiscount()).isEqualTo(0);
+        assertThat(specialDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
     @DisplayName("날짜가 이벤트 달력에 있으면 특별할인이 적용된다.")
@@ -62,6 +62,6 @@ class SpecialDiscountEventTest {
         menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         SpecialDiscountEvent specialDiscountEvent = new SpecialDiscountEvent(order);
-        assertThat(specialDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
+        assertThat(specialDiscountEvent.calculateBenefit()).isEqualTo(expectedValue);
     }
 }

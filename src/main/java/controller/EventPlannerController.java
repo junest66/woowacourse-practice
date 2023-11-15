@@ -1,10 +1,10 @@
 package controller;
 
-import christmas.DTO.DiscountResultDTO;
+import christmas.DTO.BenefitResultDTO;
 import christmas.DTO.OrderDTO;
 import christmas.domain.BadgeCalculator;
-import christmas.domain.DiscountCalculator;
-import christmas.domain.DiscountResult;
+import christmas.domain.BenefitCalculator;
+import christmas.domain.BenefitResult;
 import christmas.domain.EventsFactory;
 import christmas.domain.Order;
 import christmas.domain.PaymentAmountCalculator;
@@ -21,8 +21,8 @@ public class EventPlannerController {
     private OutputView outputView;
     private InputView inputView;
     private Waiter waiter;
-    private DiscountCalculator discountCalculator;
-    private DiscountResult discountResult;
+    private BenefitCalculator benefitCalculator;
+    private BenefitResult benefitResult;
     private PaymentAmountCalculator paymentCalculator;
     private BadgeCalculator badgeCalculator;
 
@@ -40,14 +40,14 @@ public class EventPlannerController {
         outputView.printOrderInformation(new OrderDTO(order));
         outputView.printTotalOrderAmountBeforeDiscount(order.calculateTotalPriceBeforeDiscount());
         List<Event> events = new EventsFactory(order).createEvents();
-        discountCalculator = new DiscountCalculator(events);
-        discountResult = discountCalculator.calculateDiscount();
-        outputView.printGiveawayMenu(discountResult.getGiveawayMenu());
-        outputView.printDiscountResult(new DiscountResultDTO(discountResult));
-        outputView.printTotalDiscountAmount(discountResult.getTotalAllDiscountAmount());
-        int paymentAmount = paymentCalculator.calculatePaymentAmount(order, discountResult);
+        benefitCalculator = new BenefitCalculator(events);
+        benefitResult = benefitCalculator.calculateBenefit();
+        outputView.printGiveawayMenu(benefitResult.getGiveawayMenu());
+        outputView.printBenefitResult(new BenefitResultDTO(benefitResult));
+        outputView.printTotalBenefitAmount(benefitResult.getTotalAllBenefitAmount());
+        int paymentAmount = paymentCalculator.calculatePaymentAmount(order, benefitResult);
         outputView.printPaymentAmountAfterDiscount(paymentAmount);
-        outputView.printBadgeResult(badgeCalculator.calculateBadge(discountResult));
+        outputView.printBadgeResult(badgeCalculator.calculateBadge(benefitResult));
     }
 
     private Order processOrder() {

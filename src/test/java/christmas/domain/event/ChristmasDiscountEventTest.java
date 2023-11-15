@@ -19,7 +19,7 @@ class ChristmasDiscountEventTest {
         menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
-        assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(0);
+        assertThat(christmasDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
     @DisplayName("날짜가 1일과 25일사이가 아니라면 할인금액은 0원이다.")
@@ -32,7 +32,7 @@ class ChristmasDiscountEventTest {
         menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
-        assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(0);
+        assertThat(christmasDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
     @DisplayName("3일이므로 1200원 크리스마스 디데이 할인을 한다.")
@@ -47,7 +47,7 @@ class ChristmasDiscountEventTest {
         menuOrder.put(MenuItem.ZERO_COLA, 2);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
-        assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
+        assertThat(christmasDiscountEvent.calculateBenefit()).isEqualTo(expectedValue);
     }
 
     @DisplayName("25일이므로 3400원 크리스마스 디데이 할인을 한다.")
@@ -62,6 +62,6 @@ class ChristmasDiscountEventTest {
         menuOrder.put(MenuItem.ZERO_COLA, 2);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
-        assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
+        assertThat(christmasDiscountEvent.calculateBenefit()).isEqualTo(expectedValue);
     }
 }

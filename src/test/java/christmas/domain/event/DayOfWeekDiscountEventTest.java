@@ -46,7 +46,7 @@ class DayOfWeekDiscountEventTest {
         menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
-        assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(0);
+        assertThat(christmasDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
     @DisplayName("날짜가 1일과 31일사이가 아니라면 할인금액은 0원이다.")
@@ -59,7 +59,7 @@ class DayOfWeekDiscountEventTest {
         menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         ChristmasDiscountEvent christmasDiscountEvent = new ChristmasDiscountEvent(order);
-        assertThat(christmasDiscountEvent.calculateDiscount()).isEqualTo(0);
+        assertThat(christmasDiscountEvent.calculateBenefit()).isEqualTo(0);
     }
 
     @DisplayName("평일 이벤트 적용 시 디저트 메뉴 2개 주문시 4046원 할인된다.")
@@ -74,7 +74,7 @@ class DayOfWeekDiscountEventTest {
         menuOrder.put(MenuItem.ICE_CREAM, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
-        assertThat(dayOfWeekDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
+        assertThat(dayOfWeekDiscountEvent.calculateBenefit()).isEqualTo(expectedValue);
     }
 
     @DisplayName("평일 이벤트 적용 시 디저트 메뉴 0개 주문시 0원 할인된다.")
@@ -87,7 +87,7 @@ class DayOfWeekDiscountEventTest {
         menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
-        assertThat(dayOfWeekDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
+        assertThat(dayOfWeekDiscountEvent.calculateBenefit()).isEqualTo(expectedValue);
     }
 
     @DisplayName("주말 이벤트 적용 시 메인 메뉴 2개 주문시 4046원 할인된다.")
@@ -102,7 +102,7 @@ class DayOfWeekDiscountEventTest {
         menuOrder.put(MenuItem.BBQ_RIBS, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
-        assertThat(dayOfWeekDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
+        assertThat(dayOfWeekDiscountEvent.calculateBenefit()).isEqualTo(expectedValue);
     }
 
     @DisplayName("주말 이벤트 적용 시 메인 메뉴 0개 주문시 0원 할인된다.")
@@ -115,6 +115,6 @@ class DayOfWeekDiscountEventTest {
         menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         DayOfWeekDiscountEvent dayOfWeekDiscountEvent = new DayOfWeekDiscountEvent(order);
-        assertThat(dayOfWeekDiscountEvent.calculateDiscount()).isEqualTo(expectedValue);
+        assertThat(dayOfWeekDiscountEvent.calculateBenefit()).isEqualTo(expectedValue);
     }
 }

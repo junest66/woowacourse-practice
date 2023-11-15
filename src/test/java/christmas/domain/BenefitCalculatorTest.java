@@ -17,7 +17,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class DiscountCalculatorTest {
+class BenefitCalculatorTest {
     private Order order;
     private List<Event> events;
 
@@ -36,12 +36,12 @@ class DiscountCalculatorTest {
     @DisplayName("할인 정보를 계산한다")
     @Test
     void shouldCalculateTotalDiscountsCorrectly() {
-        DiscountCalculator discountCalculator = new DiscountCalculator(events);
-        DiscountResult expectedResult = new DiscountResult();
-        expectedResult.addDiscount(EventType.CHRISTMAS.getDisplayName(), -1200);
-        expectedResult.addDiscount(EventType.WEEKDAY.getDisplayName(), -4046);
-        expectedResult.addDiscount(EventType.SPECIAL.getDisplayName(), -1000);
-        expectedResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), -25000);
-        assertThat(discountCalculator.calculateDiscount()).isEqualToComparingFieldByField(expectedResult);
+        BenefitCalculator benefitCalculator = new BenefitCalculator(events);
+        BenefitResult expectedResult = new BenefitResult();
+        expectedResult.addBenefit(EventType.CHRISTMAS.getDisplayName(), -1200);
+        expectedResult.addBenefit(EventType.WEEKDAY.getDisplayName(), -4046);
+        expectedResult.addBenefit(EventType.SPECIAL.getDisplayName(), -1000);
+        expectedResult.addBenefit(EventType.GIVEAWAY.getDisplayName(), -25000);
+        assertThat(benefitCalculator.calculateBenefit()).isEqualToComparingFieldByField(expectedResult);
     }
 }

@@ -2,7 +2,7 @@ package christmas.domain.event;
 
 public interface Event {
 
-    int calculateDiscount();
+    int calculateBenefit();
 
     String getEventName();
 }

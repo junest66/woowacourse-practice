@@ -9,7 +9,7 @@ public class Messages {
     public static final String ORDER_AMOUNT_BEFORE_DISCOUNT_MESSAGE = "<할인 전 총주문 금액>";
     public static final String GIVEAWAY_MENU_TITLE = "<증정 메뉴>";
     public static final String BENEFIT_DETAILS_TITLE = "<혜택 내역>";
-    public static final String TOTAL_DISCOUNTS_AMOUNT_TITLE = "<총혜택 금액>";
+    public static final String TOTAL_BENEFIT_AMOUNT_TITLE = "<총혜택 금액>";
     public static final String TOTAL_AMOUNT_AFTER_DISCOUNT_TITLE = "<할인 후 예상 결제 금액>";
     public static final String BADGE_EVENT_TITLE = "<12월 이벤트 배지>";
     public static final String INVALID_DATE_MESSAGE = "[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.";

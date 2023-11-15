@@ -1,6 +1,6 @@
 package christmas.view;
 
-import christmas.DTO.DiscountResultDTO;
+import christmas.DTO.BenefitResultDTO;
 import christmas.DTO.OrderDTO;
 import christmas.constants.Messages;
 import christmas.constants.Values;
@@ -32,18 +32,18 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printDiscountResult(DiscountResultDTO discountResultDTO) {
+    public void printBenefitResult(BenefitResultDTO benefitResultDTO) {
         System.out.println(Messages.BENEFIT_DETAILS_TITLE);
-        if (discountResultDTO.isAllZeroValues()) {
+        if (benefitResultDTO.isAllZeroValues()) {
             System.out.println(Values.NOT_EXIST);
             System.out.println();
             return;
         }
-        printNonZeroDiscountEvents(discountResultDTO);
+        printNonZeroBenefitEvents(benefitResultDTO);
     }
 
-    private static void printNonZeroDiscountEvents(DiscountResultDTO discountResultDTO) {
-        discountResultDTO.eventResult().entrySet().stream()
+    private static void printNonZeroBenefitEvents(BenefitResultDTO benefitResultDTO) {
+        benefitResultDTO.eventResult().entrySet().stream()
                 .filter(entry -> entry.getValue() != 0)
                 .map(entry -> String.format(Values.BENEFIT_DETAILS, entry.getKey(),
                         String.format(Values.FORMATTED_CURRENCY_AMOUNT, entry.getValue())))
@@ -51,8 +51,8 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printTotalDiscountAmount(int amount) {
-        System.out.println(Messages.TOTAL_DISCOUNTS_AMOUNT_TITLE);
+    public void printTotalBenefitAmount(int amount) {
+        System.out.println(Messages.TOTAL_BENEFIT_AMOUNT_TITLE);
         System.out.println(String.format(Values.FORMATTED_CURRENCY_AMOUNT, amount));
         System.out.println();
     }

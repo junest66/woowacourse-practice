@@ -19,7 +19,7 @@ class GiveawayEventTest {
         menuOrder.put(MenuItem.TAPAS, 1);
         Order order = new Order(date, menuOrder);
         GiveawayEvent giveawayEvent = new GiveawayEvent(order);
-        assertThat(giveawayEvent.calculateDiscount()).isEqualTo(0);
+        assertThat(giveawayEvent.calculateBenefit()).isEqualTo(0);
     }
 
     @DisplayName("날짜가 1일과 31일사이가 아니라면 증정이벤트의 혜택금액 0원이다.")
@@ -32,7 +32,7 @@ class GiveawayEventTest {
         menuOrder.put(MenuItem.SEAFOOD_PASTA, 2);
         Order order = new Order(date, menuOrder);
         GiveawayEvent giveawayEvent = new GiveawayEvent(order);
-        assertThat(giveawayEvent.calculateDiscount()).isEqualTo(0);
+        assertThat(giveawayEvent.calculateBenefit()).isEqualTo(0);
     }
 
     @DisplayName("증정 이벤트 조건이 충족되면 혜택 금액은 샴페인 1개 가격인 25000원이다.")
@@ -46,6 +46,6 @@ class GiveawayEventTest {
         menuOrder.put(MenuItem.TBONE_STEAK, 2);
         Order order = new Order(date, menuOrder);
         GiveawayEvent giveawayEvent = new GiveawayEvent(order);
-        assertThat(giveawayEvent.calculateDiscount()).isEqualTo(expectedValue);
+        assertThat(giveawayEvent.calculateBenefit()).isEqualTo(expectedValue);
     }
 }

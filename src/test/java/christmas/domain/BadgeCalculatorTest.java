@@ -13,13 +13,13 @@ class BadgeCalculatorTest {
     @Test
     void shouldAwardSantaBadgeForTotalDiscountsOverTwentyThousand() {
         String expectedValue = Badge.SANTA.getName();
-        DiscountResult discountResult = new DiscountResult();
-        discountResult.addDiscount(EventType.CHRISTMAS.getDisplayName(), -1200);
-        discountResult.addDiscount(EventType.WEEKDAY.getDisplayName(), -4046);
-        discountResult.addDiscount(EventType.SPECIAL.getDisplayName(), -1000);
-        discountResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), -25000);
+        BenefitResult benefitResult = new BenefitResult();
+        benefitResult.addBenefit(EventType.CHRISTMAS.getDisplayName(), -1200);
+        benefitResult.addBenefit(EventType.WEEKDAY.getDisplayName(), -4046);
+        benefitResult.addBenefit(EventType.SPECIAL.getDisplayName(), -1000);
+        benefitResult.addBenefit(EventType.GIVEAWAY.getDisplayName(), -25000);
         BadgeCalculator badgeCalculator = new BadgeCalculator();
-        String badge = badgeCalculator.calculateBadge(discountResult);
+        String badge = badgeCalculator.calculateBadge(benefitResult);
         assertThat(badge).isEqualTo(expectedValue);
     }
 
@@ -27,13 +27,13 @@ class BadgeCalculatorTest {
     @Test
     void shouldAwardTreeBadgeForTotalDiscountsBetweenTenAndTwentyThousand() {
         String expectedValue = Badge.TREE.getName();
-        DiscountResult discountResult = new DiscountResult();
-        discountResult.addDiscount(EventType.CHRISTMAS.getDisplayName(), -3400);
-        discountResult.addDiscount(EventType.WEEKDAY.getDisplayName(), -6069);
-        discountResult.addDiscount(EventType.SPECIAL.getDisplayName(), -1000);
-        discountResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), 0);
+        BenefitResult benefitResult = new BenefitResult();
+        benefitResult.addBenefit(EventType.CHRISTMAS.getDisplayName(), -3400);
+        benefitResult.addBenefit(EventType.WEEKDAY.getDisplayName(), -6069);
+        benefitResult.addBenefit(EventType.SPECIAL.getDisplayName(), -1000);
+        benefitResult.addBenefit(EventType.GIVEAWAY.getDisplayName(), 0);
         BadgeCalculator badgeCalculator = new BadgeCalculator();
-        String badge = badgeCalculator.calculateBadge(discountResult);
+        String badge = badgeCalculator.calculateBadge(benefitResult);
         assertThat(badge).isEqualTo(expectedValue);
     }
 
@@ -41,13 +41,13 @@ class BadgeCalculatorTest {
     @Test
     void shouldAwardStarBadgeForTotalDiscountsBetweenFiveAndTenThousand() {
         String expectedValue = Badge.STAR.getName();
-        DiscountResult discountResult = new DiscountResult();
-        discountResult.addDiscount(EventType.CHRISTMAS.getDisplayName(), -1200);
-        discountResult.addDiscount(EventType.WEEKDAY.getDisplayName(), -4046);
-        discountResult.addDiscount(EventType.SPECIAL.getDisplayName(), -1000);
-        discountResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), -0);
+        BenefitResult benefitResult = new BenefitResult();
+        benefitResult.addBenefit(EventType.CHRISTMAS.getDisplayName(), -1200);
+        benefitResult.addBenefit(EventType.WEEKDAY.getDisplayName(), -4046);
+        benefitResult.addBenefit(EventType.SPECIAL.getDisplayName(), -1000);
+        benefitResult.addBenefit(EventType.GIVEAWAY.getDisplayName(), -0);
         BadgeCalculator badgeCalculator = new BadgeCalculator();
-        String badge = badgeCalculator.calculateBadge(discountResult);
+        String badge = badgeCalculator.calculateBadge(benefitResult);
         assertThat(badge).isEqualTo(expectedValue);
     }
 
@@ -55,13 +55,13 @@ class BadgeCalculatorTest {
     @Test
     void shouldReturnNoBadgeForTotalDiscountsUnderFiveThousand() {
         String expectedValue = Values.NOT_EXIST;
-        DiscountResult discountResult = new DiscountResult();
-        discountResult.addDiscount(EventType.CHRISTMAS.getDisplayName(), -1200);
-        discountResult.addDiscount(EventType.WEEKDAY.getDisplayName(), 0);
-        discountResult.addDiscount(EventType.SPECIAL.getDisplayName(), -1000);
-        discountResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), -0);
+        BenefitResult benefitResult = new BenefitResult();
+        benefitResult.addBenefit(EventType.CHRISTMAS.getDisplayName(), -1200);
+        benefitResult.addBenefit(EventType.WEEKDAY.getDisplayName(), 0);
+        benefitResult.addBenefit(EventType.SPECIAL.getDisplayName(), -1000);
+        benefitResult.addBenefit(EventType.GIVEAWAY.getDisplayName(), -0);
         BadgeCalculator badgeCalculator = new BadgeCalculator();
-        String badge = badgeCalculator.calculateBadge(discountResult);
+        String badge = badgeCalculator.calculateBadge(benefitResult);
         assertThat(badge).isEqualTo(expectedValue);
     }
 }

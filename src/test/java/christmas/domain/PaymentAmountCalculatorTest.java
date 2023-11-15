@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 
 class PaymentAmountCalculatorTest {
     private Order order;
-    private DiscountResult discountResult = new DiscountResult();
+    private BenefitResult benefitResult = new BenefitResult();
 
     @BeforeEach
     void setup() {
@@ -22,10 +22,10 @@ class PaymentAmountCalculatorTest {
         menuOrder.put(MenuItem.CHOCO_CAKE, 2);
         menuOrder.put(MenuItem.ZERO_COLA, 1);
         order = new Order(3, menuOrder);
-        discountResult.addDiscount(EventType.CHRISTMAS.getDisplayName(), -1200);
-        discountResult.addDiscount(EventType.WEEKDAY.getDisplayName(), -4046);
-        discountResult.addDiscount(EventType.SPECIAL.getDisplayName(), -1000);
-        discountResult.addDiscount(EventType.GIVEAWAY.getDisplayName(), -25000);
+        benefitResult.addBenefit(EventType.CHRISTMAS.getDisplayName(), -1200);
+        benefitResult.addBenefit(EventType.WEEKDAY.getDisplayName(), -4046);
+        benefitResult.addBenefit(EventType.SPECIAL.getDisplayName(), -1000);
+        benefitResult.addBenefit(EventType.GIVEAWAY.getDisplayName(), -25000);
     }
 
     @DisplayName("지불 금액을 계산한다")
@@ -33,7 +33,7 @@ class PaymentAmountCalculatorTest {
     void shouldCalculateCorrectPaymentAmount() {
         int expectedValue = 135754;
         PaymentAmountCalculator paymentAmountCalculator = new PaymentAmountCalculator();
-        int paymentAmount = paymentAmountCalculator.calculatePaymentAmount(order, discountResult);
+        int paymentAmount = paymentAmountCalculator.calculatePaymentAmount(order, benefitResult);
         assertThat(paymentAmount).isEqualTo(expectedValue);
     }
 }
