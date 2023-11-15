@@ -55,7 +55,7 @@ class OutputViewTest {
         DiscountResultDTO discountResultDTO = prepareDiscountResultDTO(menuOrder, 3);
         outputView.printDiscountResult(discountResultDTO);
         String expectedOutput = Messages.BENEFIT_DETAILS_TITLE
-                + "\n증정 이벤트: -25,000원\n크리스마스 디데이 할인: -1,200원\n평일 할인: -4,046원\n특별 할인: -1,000원\n\n";
+                + "\n크리스마스 디데이 할인: -1,200원\n평일 할인: -4,046원\n특별 할인: -1,000원\n증정 이벤트: -25,000원\n\n";
         assertThat(outContent.toString()).contains(expectedOutput);
     }
 
@@ -70,7 +70,7 @@ class OutputViewTest {
         DiscountResultDTO discountResultDTO = prepareDiscountResultDTO(menuOrder, 31);
         outputView.printDiscountResult(discountResultDTO);
         String expectedOutput =
-                Messages.BENEFIT_DETAILS_TITLE + "\n증정 이벤트: -25,000원\n평일 할인: -4,046원\n특별 할인: -1,000원\n\n";
+                Messages.BENEFIT_DETAILS_TITLE + "\n평일 할인: -4,046원\n특별 할인: -1,000원\n증정 이벤트: -25,000원\n\n";
         assertThat(outContent.toString()).contains(expectedOutput);
     }
 
@@ -84,7 +84,7 @@ class OutputViewTest {
         menuOrder.put(MenuItem.ZERO_COLA, 1);
         DiscountResultDTO discountResultDTO = prepareDiscountResultDTO(menuOrder, 26);
         outputView.printDiscountResult(discountResultDTO);
-        String expectedOutput = Messages.BENEFIT_DETAILS_TITLE + "\n증정 이벤트: -25,000원\n평일 할인: -4,046원\n\n";
+        String expectedOutput = Messages.BENEFIT_DETAILS_TITLE + "\n평일 할인: -4,046원\n증정 이벤트: -25,000원\n\n";
         assertThat(outContent.toString()).isEqualTo(expectedOutput);
     }
 

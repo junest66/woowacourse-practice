@@ -2,14 +2,14 @@ package christmas.domain;
 
 import christmas.constants.EventType;
 import christmas.constants.Values;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class DiscountResult {
     private Map<String, Integer> eventResult;
 
     public DiscountResult() {
-        this.eventResult = new HashMap<>();
+        this.eventResult = new LinkedHashMap<>();
     }
 
     public void addDiscount(String eventName, int discountAmount) {
