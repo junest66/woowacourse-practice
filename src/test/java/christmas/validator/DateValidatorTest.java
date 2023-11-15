@@ -28,6 +28,15 @@ class DateValidatorTest {
                 .hasMessage(INVALID_DATE_MESSAGE);
     }
 
+    @DisplayName("0으로 시작하는 날짜형태는 예외가 발생한다.")
+    @ParameterizedTest
+    @ValueSource(strings = {"01", "02", "03", "05", "08"})
+    void shouldThrowExceptionForDateStartingWithZero(String input) {
+        assertThatThrownBy(() -> DateValidator.validate(input))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(INVALID_DATE_MESSAGE);
+    }
+
     @DisplayName("유효한 날짜 입력을 검증한다.")
     @ParameterizedTest
     @ValueSource(strings = {"1", "2", "5", "31"})
