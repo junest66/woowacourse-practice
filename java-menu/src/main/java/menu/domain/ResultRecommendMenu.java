@@ -11,13 +11,17 @@ import menu.constants.FoodCategory;
 public class ResultRecommendMenu {
     private final Map<Coach, List<String>> result = new LinkedHashMap<>();
     private final List<FoodCategory> recommendedCategories = new ArrayList<>();
+    private final RecommendationGenerator recommendationGenerator;
+
+    public ResultRecommendMenu(RecommendationGenerator recommendationGenerator) {
+        this.recommendationGenerator = recommendationGenerator;
+    }
 
     public void recommend(List<Coach> coaches) {
-        RecommendationGenerator generator = new RecommendationGenerator(new RealRandomGenerator());
         for (int count = 0; count < DayOfWeek.values().length; count++) {
-            FoodCategory randomCategory = generator.getRandomCategory();
+            FoodCategory randomCategory = recommendationGenerator.getRandomCategory();
             recommendedCategories.add(randomCategory);
-            generateRecommendationsForCategory(coaches, generator, randomCategory);
+            generateRecommendationsForCategory(coaches, recommendationGenerator, randomCategory);
         }
     }
 
