@@ -12,7 +12,7 @@ public class Coach {
     }
 
     public boolean isMenuEligible(String menu) {
-        return ineligibleFoods.contains(menu);
+        return !ineligibleFoods.contains(menu);
     }
 
     public String getName() {

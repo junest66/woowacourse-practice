@@ -28,7 +28,7 @@ public class RecommendationGenerator {
     private boolean isMenuNotRecommendedOrAlreadyRecommended(Coach coach, String menu,
                                                              Map<Coach, List<String>> result) {
         List<String> recommendedMenus = result.getOrDefault(coach, new ArrayList<>());
-        return coach.isMenuEligible(menu) || recommendedMenus.contains(menu);
+        return !coach.isMenuEligible(menu) || recommendedMenus.contains(menu);
     }
 
     private List<String> getEligibleMenus(FoodCategory category) {
