@@ -18,13 +18,13 @@ public class RestrictedMenuValidation {
         checkValidMenu(menuNames);
     }
 
-    public void checkMenuCount(List<String> menuNames) {
+    private void checkMenuCount(List<String> menuNames) {
         if (menuNames.size() < MINIMUM_RESTRICTED_MENUS || menuNames.size() > MAXIMUM_RESTRICTED_MENUS) {
             throw new IllegalArgumentException(MENU_COUNT_ERROR_MESSAGE);
         }
     }
 
-    public void checkValidMenu(List<String> menuNames) {
+    private void checkValidMenu(List<String> menuNames) {
         for (String menuName : menuNames) {
             if (!FoodMenu.isValidName(menuName)) {
                 throw new IllegalArgumentException(INVALID_MENU_ERROR_MESSAGE);
