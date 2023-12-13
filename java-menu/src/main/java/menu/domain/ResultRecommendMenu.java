@@ -13,7 +13,7 @@ public class ResultRecommendMenu {
     private final List<FoodCategory> recommendedCategories = new ArrayList<>();
 
     public void recommend(List<Coach> coaches) {
-        RecommendationGenerator generator = new RecommendationGenerator();
+        RecommendationGenerator generator = new RecommendationGenerator(new RealRandomGenerator());
         for (int count = 0; count < DayOfWeek.values().length; count++) {
             FoodCategory randomCategory = generator.getRandomCategory();
             recommendedCategories.add(randomCategory);

@@ -1,18 +1,21 @@
 package menu.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import menu.constants.FoodCategory;
 import menu.constants.FoodMenu;
+import menu.utils.RandomGenerator;
 
 public class RecommendationGenerator {
-    private static final int MIN_CATEGORY_NUMBER = 1;
-    private static final int MAX_CATEGORY_NUMBER = 5;
+    private final RandomGenerator randomGenerator;
+
+    public RecommendationGenerator(RandomGenerator randomGenerator) {
+        this.randomGenerator = randomGenerator;
+    }
 
     public FoodCategory getRandomCategory() {
-        int randomNumber = Randoms.pickNumberInRange(MIN_CATEGORY_NUMBER, MAX_CATEGORY_NUMBER);
+        int randomNumber = randomGenerator.generateRandomNumberInRange();
         return FoodCategory.findByNumber(randomNumber);
     }
 
@@ -20,7 +23,7 @@ public class RecommendationGenerator {
         List<String> eligibleMenus = getEligibleMenus(category);
         String recommendFood;
         do {
-            recommendFood = Randoms.shuffle(eligibleMenus).get(0);
+            recommendFood = (String) randomGenerator.getRandomItem(eligibleMenus);
         } while (isMenuNotRecommendedOrAlreadyRecommended(coach, recommendFood, result));
         return recommendFood;
     }
