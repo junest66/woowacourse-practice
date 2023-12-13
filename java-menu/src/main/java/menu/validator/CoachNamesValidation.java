@@ -20,13 +20,13 @@ public class CoachNamesValidation {
         }
     }
 
-    public void checkCoachCount(List<String> names) {
+    private void checkCoachCount(List<String> names) {
         if (names.size() < MIN_COACHES || names.size() > MAX_COACHES) {
             throw new IllegalArgumentException(COACH_COUNT_ERROR_MESSAGE);
         }
     }
 
-    public void checkNamesLength(String name) {
+    private void checkNamesLength(String name) {
         if (name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException(NAME_LENGTH_ERROR_MESSAGE);
         }
